@@ -1,4 +1,4 @@
-name: Build Windows Wheel
+name: Build WinWheel
 
 on: [push, pull_request]
 
@@ -12,28 +12,29 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4  # Checkout the repository code
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v5  # Set up Python environment
 
       - name: Install Rust
-        run: rustup toolchain install stable
+        run: rustup toolchain install stable  # Install Rust toolchain
 
       - name: Add i686-pc-windows-msvc target
-        run: rustup target add i686-pc-windows-msvc
+        run: rustup target add i686-pc-windows-msvc  # Add necessary Rust target
 
       - name: Install cibuildwheel
-        run: python -m pip install cibuildwheel==2.19.1
+        run: python -m pip install cibuildwheel==2.19.1  # Install cibuildwheel
 
       - name: Build wheels
-        run: python -m cibuildwheel --output-dir wheelhouse
+        run: python -m cibuildwheel --output-dir wheelhouse  # Build wheels
         env:
-          CIBW_BUILD: "cp310-win32"
-          CIBW_SKIP: "cp27-*"
+          CIBW_BUILD: "cp310-win32"  # Target Python 3.10 on 32-bit Windows
+          CIBW_SKIP: "cp27-*"  # Skip Python 2.7 builds
+          CIBW_PROJECT_REQUIRES_PYTHON: "./python/pathway"  # Set package directory
 
       - name: Upload wheels
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4  # Upload built wheels as artifacts
         with:
           name: cibw-wheels-${{ matrix.os }}-${{ strategy.job-index }}
           path: ./wheelhouse/*.whl
