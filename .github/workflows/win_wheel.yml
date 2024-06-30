@@ -1,4 +1,4 @@
-name: Build
+name: Build WinWheels
 
 on: [push, pull_request]
 
@@ -18,11 +18,12 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2  # Set up Python environment
 
-      - name: Install Rust toolchain
+      - name: Install Rust toolchain (Windows)
         if: runner.os == 'Windows'
         run: |
           choco install rust -y
-          refreshenv  # Refresh environment variables after installation
+          # Import Chocolatey profile to refresh environment variables
+          Import-Module $env:ChocolateyInstall\helpers\chocolateyProfile.psm1
 
       - name: Install build dependencies
         run: |
