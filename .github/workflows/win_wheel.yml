@@ -22,7 +22,7 @@ jobs:
         with:
           package-dir: ./python/pathway  # Specify the package directory to build
           output-dir: wheelhouse  # Specify the output directory for wheels
-          config-file: "{package}/pyproject.toml"  # Specify the location of pyproject.toml
+          config-file: "./pyproject.toml"  # Specify the location of pyproject.toml
 
       - name: Upload wheels
         uses: actions/upload-artifact@v2  # Upload built wheels as artifacts
