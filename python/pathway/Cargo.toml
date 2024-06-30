@@ -8,6 +8,7 @@ license = "BUSL-1.1"
 
 [lib]
 name = "pathway_engine"
+path = "src/lib.rs"
 crate-type = ["cdylib", "lib"]
 test = false
 doctest = false
