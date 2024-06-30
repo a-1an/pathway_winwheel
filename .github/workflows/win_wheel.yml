@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         # Specify different operating systems for matrix testing
-        os: [ubuntu-latest, windows-latest, macos-10.15]
+        os: [windows-latest]
 
     steps:
       - name: Checkout code
