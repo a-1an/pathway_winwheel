@@ -265,3 +265,5 @@ Pathway is distributed on a [BSL 1.1 License](https://github.com/pathwaycom/path
 If you develop a library or connector which you would like to integrate with this repo, we suggest releasing it first as a separate repo on a MIT/Apache 2.0 license. 
 
 For all concerns regarding core Pathway functionalities, Issues are encouraged. For further information, don't hesitate to engage with Pathway's [Discord community](https://discord.gg/pathway).
+
+meh
